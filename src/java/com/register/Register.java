@@ -24,6 +24,7 @@ import javax.servlet.http.Part;
  *
  * @author Vikas Yadav
  */
+@Deprecated
 @MultipartConfig
 public class Register extends HttpServlet {
 
@@ -79,12 +80,12 @@ public class Register extends HttpServlet {
                 InputStream is = part.getInputStream();
                 byte[] data = new byte[is.available()];
                 is.read(data);
-                String path = request.getRealPath("/")+"img"+File.separator+filename;
+                String path = request.getRealPath("/")+"\\img"+File.separator+filename;
                 //out.println(path);
                 FileOutputStream fos = new FileOutputStream(path);
                 fos.write(data);
                 fos.close();
-                //con.close();
+                con.close();
                 out.println("done");
             } catch (Exception e) {
                 e.printStackTrace();
